@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	function loadXMLDoc() {
+		var sendData = {
+			type: "editUser",
+			data: {
+				isDelete: true,
+				_id: "af359ec1e3ab74f59f26a47ef600e8d2",
+				mail: "go6o@abv.bg",
+				password: "123456",
+				firstName: "Bozhidar",
+				lastName: "Ivanov",
+				birthdate: {
+					day: 2,
+					month: 9,
+					year: 1992
+				}
+			}
+		};
+		
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function () {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				console.log(JSON.parse(xmlhttp.response));
+				document.getElementById("res").innerHTML = xmlhttp.responseText;
+			}
+		}
+		xmlhttp.open("POST", "http://127.0.0.1:1992/", true);
+		// xmlhttp.setRequestHeader("Content-Type", "application/json");
+		sendData = JSON.stringify(sendData);
+		xmlhttp.send(sendData);
+		document.getElementById("req").innerHTML = sendData;
+	}
+</script>
+</head>
+<body onload="loadXMLDoc()">
+	<h2>Database</h2>
+	<div id="req"></div>
+	<br/>
+	<div id="res"></div>
+</body>
+</html>
