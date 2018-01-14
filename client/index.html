@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Spot</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="appStyles.css">
+	</head>
+	<body>
+		<img class="logoImage" src="images/theSpot.png"/>
+		<ul class="navigationBar">
+			<li id="navBar_myPlaces" onmousedown="theSpot.navigation.openView('myPlaces')">My places</li>
+			<li id="navBar_searchPlace" onmousedown="theSpot.navigation.openView('searchPlace')">Search place</li>
+			<li id="navBar_profile" onmousedown="theSpot.navigation.openView('profile')">Profile</li>
+			<li id="navBar_logout" onmousedown="theSpot.login.showLogin()" style="float: right;">Logout</li>
+			<li id="navBar_help" style="float: right;" onmousedown="theSpot.navigation.toggleHelpMenuVisibility(true)">Help</li>
+		</ul>
+		<div class="loadingScreen">
+			<div class="wheel"></div>
+		</div>
+		<div class="startDivBody">
+			<div class="loginContainer">
+				<div class="heading">The Spot</div>
+				<div class="defaultLabel">The WORLD a click away!</div>
+				<table>
+					<tbody>
+						<tr>
+							<td><span class="defaultLabel">E-mail:</span></td>
+							<td><input class="defaultInput" onkeydown="theSpot.login.keyPressHandler(event.keyCode)" type="email" name="mail" value="bojo@gmail.com"/></td>
+						</tr>
+						<tr>
+							<td><span class="defaultLabel">Password:</span></td>
+							<td><input class="defaultInput" onkeydown="theSpot.login.keyPressHandler(event.keyCode)" type="password" name="password" value="123456"/></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<div class="defaultButton" onmousedown="theSpot.login.loginHandler()">Login</div>
+								<div class="defaultButton" onmousedown="theSpot.login.addRegisterFields()">Register</div>
+							</td>
+						</tr>
+						<tr style="display: none;">
+							<td><span class="defaultLabel">Repeat password:</span></td>
+							<td><input class="defaultInput" type="password" name="password"/></td>
+						</tr>
+						<tr style="display: none;">
+							<td><span class="defaultLabel">First name:</span></td>
+							<td><input class="defaultInput" type="text" name="firstName"/></td>
+						</tr>
+						<tr style="display: none;">
+							<td><span class="defaultLabel">Last name:</span></td>
+							<td><input class="defaultInput" type="text" name="lastName"/></td>
+						</tr>
+						<tr style="display: none;">
+							<td><span class="defaultLabel">Birthdate:</span></td>
+							<td><input class="defaultInput" type="date" name="birthdate"/></td>
+						</tr>
+						<tr style="display: none;">
+							<td></td>
+							<td>
+								<div class="defaultButton" onmousedown="theSpot.login.registerAndLoginHandler()">Register &amp; Login</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="helpMenuIFrame">
+			<img src="images/exit_button.png" class="exitButton" onmousedown="theSpot.navigation.toggleHelpMenuVisibility(false)"/>
+			<div class="helpHeading">HELP MENU</div>
+			<ul>
+				<li class="helpItem">
+					<div class="title" onmousedown="theSpot.navigation.expandHelpItem(this)">
+						<span>Filtering your library by category</span>
+						<img src="images/down_arrow.png"/>
+					</div>
+					<div class="body">
+						<img src="images/tutorials/myPlaces_filteringByCategories.gif"/>
+						<div>Your library possesses Categories list, located in the upper-left corner. From it you can select the desired categories to show in the library for easy search.</div>
+					</div>
+				</li>
+				<li class="helpItem">
+					<div class="title" onmousedown="theSpot.navigation.expandHelpItem(this)">
+						<span>Filtering your library by text search</span>
+						<img src="images/down_arrow.png"/>
+					</div>
+					<div class="body">
+						<img src="images/tutorials/myPlaces_filteringByText.gif"/>
+						<div>Next to the Categories list you will see an input field. You can use it to find matches in the name and the description of your records. The filed has the functionality of a search as you type, so it is not obligatory to press the search button.</div>
+					</div>
+				</li>
+				<li class="helpItem">
+					<div class="title" onmousedown="theSpot.navigation.expandHelpItem(this)">
+						<span>Edit a place in your library</span>
+						<img src="images/down_arrow.png"/>
+					</div>
+					<div class="body">
+						<img src="images/tutorials/myPlaces_editPlace.gif"/>
+						<div>Every record in your library can be edited. In the example above, you will see how to navigate to the edit menu and save the desired changes.</div>
+					</div>
+				</li>
+				<li class="helpItem">
+					<div class="title" onmousedown="theSpot.navigation.expandHelpItem(this)">
+						<span>Delete a place from your library</span>
+						<img src="images/down_arrow.png"/>
+					</div>
+					<div class="body">
+						<img src="images/tutorials/myPlaces_deletePlace.gif"/>
+						<div>Follow the steps in the upper example to delete a place from your library. Warning: once delete a record cannot be recovered!</div>
+					</div>
+				</li>
+				<li class="helpItem">
+					<div class="title" onmousedown="theSpot.navigation.expandHelpItem(this)">
+						<span>Search controls</span>
+						<img src="images/down_arrow.png"/>
+					</div>
+					<div class="body">
+						<img src="images/tutorials/searchPlace_controls.png"/>
+						<div>In upper part of the Search place menu you will see a few controls: Create place button (for creating a new place), type of search dropdown (types of search are: key-word, coordinates, sentence and address), input for query (text to search for), Search button (initiate search and show results) and all of the search engines in which to search (disabling any of them will result in less results).</div>
+					</div>
+				</li>
+				<li class="helpItem">
+					<div class="title" onmousedown="theSpot.navigation.expandHelpItem(this)">
+						<span>Key-word search</span>
+						<img src="images/down_arrow.png"/>
+					</div>
+					<div class="body">
+						<img src="images/tutorials/searchPlaces_keyword.gif"/>
+						<div>To search using a key-word, select "Key-word" from the dropdown, enter your query and press search.</div>
+					</div>
+				</li>
+				<li class="helpItem">
+					<div class="title" onmousedown="theSpot.navigation.expandHelpItem(this)">
+						<span>Sentence search</span>
+						<img src="images/down_arrow.png"/>
+					</div>
+					<div class="body">
+						<img src="images/tutorials/searchPlaces_sentance.gif"/>
+						<div>To search using a key-word, select "Sentence" from the dropdown, enter your query and press search.</div>
+					</div>
+				</li>
+				<li class="helpItem">
+					<div class="title" onmousedown="theSpot.navigation.expandHelpItem(this)">
+						<span>Coordinates search</span>
+						<img src="images/down_arrow.png"/>
+					</div>
+					<div class="body">
+						<img src="images/tutorials/searchPlaces_coordinates.gif"/>
+						<div>To search using a key-word, select "Coordinates" from the dropdown, enter your coordinates (latitude and longitude) and press search.</div>
+					</div>
+				</li>
+				<li class="helpItem">
+					<div class="title" onmousedown="theSpot.navigation.expandHelpItem(this)">
+						<span>Address search</span>
+						<img src="images/down_arrow.png"/>
+					</div>
+					<div class="body">
+						<img src="images/tutorials/searchPlaces_address.gif"/>
+						<div>To search using a key-word, select "Address" from the dropdown, enter your address (City, street, number, etc.) and press search.</div>
+					</div>
+				</li>
+				<li class="helpItem">
+					<div class="title" onmousedown="theSpot.navigation.expandHelpItem(this)">
+						<span>Create a new place</span>
+						<img src="images/down_arrow.png"/>
+					</div>
+					<div class="body">
+						<img src="images/tutorials/searchPlaces_newPlace.gif"/>
+						<div>If you are not able to find the desired place in any of the connected databases (Google Places, Here Places or Sygic) you can add it yourself. Press the Create place button and fill in the fields to add a record to your library.</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="leftViewContainer myPlaces"></div>
+		<div class="leftViewContainer searchPlace"></div>
+		<div class="leftViewContainer profile"></div>
+		<div class="leftViewContainer editPlace"></div>
+		<div class="mapContainer">Map</div>
+	</body>
+		<script src="mapStyles.js"></script>
+		<script src="theSpotFunctions.js"></script>
+		<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0bQVBuFt9QKZadZxJbB8OPlaKczTrEK4&libraries=places"></script> -->
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0bQVBuFt9QKZadZxJbB8OPlaKczTrEK4&libraries=places&callback=theSpot.mapFunctions.init"></script>
+</html>
